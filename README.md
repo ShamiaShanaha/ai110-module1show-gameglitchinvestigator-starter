@@ -29,9 +29,29 @@ It wrote the code, ran away, and now the game is unplayable.
 - [ ] Detail which bugs you found.
 - [ ] Explain what fixes you applied.
 
+The purpose of the game was to guess the secret key. You get to difficulty from normal to hard. Each level has the range of numbers you can guess from and also the amount of attempts you can commit. 
+
+The bugs that I found in the glitch game:
+1. When I guess the secret key and I choose a number that is lower then the secret key the program will then tell me guess lower. However, when I click on the button another time it will tell me to guess higher. Every time I press on the button it would switch between high or low even though my chosen number remains the same.
+2. The new game button does not work. It does not restart the game and it does not take the previous number out of the text box.
+3. The hard and medium difficulty ranges should be swapped.
+4. The easy and normal attempts needed to be swapped.
+
+Fixes I applied:
+1. For the first bug the fix was to make sure the comparison was in integers rather then string. Also to change the hint original message to this if the guess is higher than the secret it says “Go LOWER!”, and if the guess is lower than the secret it says “Go HIGHER!”.
+2. For the second bug the fix was to reset the attempt counter, generate a new secret within the current difficulty range, reset the game status to playing and change the text input widgets key so Streamlit clears the input field.
+3. For the third bug I just swapped the ranges so normal is from 1-50 and hard is 1-100.
+4. For the fourth bug I just swapped the attempts of easy and normal. 
+
+
 ## 📸 Demo
 
 - [ ] [Insert a screenshot of your fixed, winning game here]
+
+My pytests:
+
+
+
 
 ## 🚀 Stretch Features
 
