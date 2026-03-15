@@ -160,7 +160,7 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        # FIXED: Removed even/odd attempt string casting — secret is now always passed as an int so check_guess uses consistent int comparison every attempt.
+        # FIXED: Removed even/odd attempt string casting the secret is now always passed as an int so check_guess uses consistent int comparison every attempt.
         secret = st.session_state.secret
 
         outcome, message = check_guess(guess_int, secret)
