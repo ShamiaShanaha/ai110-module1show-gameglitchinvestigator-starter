@@ -34,7 +34,7 @@ The purpose of the game was to guess the secret key. You get to difficulty from 
 The bugs that I found in the glitch game:
 1. When I guess the secret key and I choose a number that is lower then the secret key the program will then tell me guess lower. However, when I click on the button another time it will tell me to guess higher. Every time I press on the button it would switch between high or low even though my chosen number remains the same.
 2. The new game button does not work. It does not restart the game and it does not take the previous number out of the text box.
-3. The hard and medium difficulty ranges should be swapped.
+3. The hard and normal difficulty ranges should be swapped.
 4. The easy and normal attempts needed to be swapped.
 
 Fixes I applied:
