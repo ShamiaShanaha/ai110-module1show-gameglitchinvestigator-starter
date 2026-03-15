@@ -51,6 +51,10 @@ Fixes I applied:
 Bug 1 Solved:
 ![image alt](https://github.com/ShamiaShanaha/ai110-module1show-gameglitchinvestigator-starter/blob/main/Bug1.png?raw=true)
 
+Bug 2 Solved:
+![image alt](https://github.com/ShamiaShanaha/ai110-module1show-gameglitchinvestigator-starter/blob/main/Bug2.png?raw=true)
+
+
 My pytests:
 ![image alt](https://github.com/ShamiaShanaha/ai110-module1show-gameglitchinvestigator-starter/blob/main/pytest.png?raw=true)
 
