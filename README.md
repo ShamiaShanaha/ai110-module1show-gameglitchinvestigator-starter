@@ -29,7 +29,7 @@ It wrote the code, ran away, and now the game is unplayable.
 - [ ] Detail which bugs you found.
 - [ ] Explain what fixes you applied.
 
-The purpose of the game was to guess the secret key. You get to difficulty from normal to hard. Each level has the range of numbers you can guess from and also the amount of attempts you can commit. 
+The purpose of the game was to guess the secret key. You get to difficulty from easy to hard. Each level has the range of numbers you can guess from and also the amount of attempts you can commit. 
 
 The bugs that I found in the glitch game:
 1. When I guess the secret key and I choose a number that is lower then the secret key the program will then tell me guess lower. However, when I click on the button another time it will tell me to guess higher. Every time I press on the button it would switch between high or low even though my chosen number remains the same.
