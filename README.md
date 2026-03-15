@@ -57,7 +57,6 @@ Bug 2 Solved:
 Bug 3 Solved:
 ![image alt](https://github.com/ShamiaShanaha/ai110-module1show-gameglitchinvestigator-starter/blob/main/Bug%203%20Normal.png?raw=true)
 
-![image alt](https://github.com/ShamiaShanaha/ai110-module1show-gameglitchinvestigator-starter/blob/main/Bug%203%20Hard.png?raw=true)
 
 
 
