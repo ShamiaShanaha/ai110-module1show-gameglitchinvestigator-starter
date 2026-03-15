@@ -5,9 +5,9 @@ def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
-        return 1, 100
+        return 1, 50  # FIXED: Changed Normal from 1-100 to 1-50 so difficulty levels are properly spaced.
     if difficulty == "Hard":
-        return 1, 50
+        return 1, 100  # FIXED: Changed Hard from 1-50 to 1-100. Larger range makes it harder to guess.
     return 1, 100
 
 
@@ -35,16 +35,16 @@ def check_guess(guess, secret):
 
     try:
         if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+            return "Too High", "📉 Go LOWER!"  # FIXED: Was returning "Go HIGHER!" when guess was too high. Swapped to correctly say "Go LOWER!".
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"  # FIXED: Was returning "Go LOWER!" when guess was too low.Swapped to correctly say "Go HIGHER!".
     except TypeError:
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
         if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+            return "Too High", "📉 Go LOWER!"  # FIXED: Was returning "Go HIGHER!" in TypeError fallback. Swapped to correctly say "Go LOWER!".
+        return "Too Low", "📈 Go HIGHER!"  # FIXED: Was returning "Go LOWER!" in TypeError fallback. Swapped to correctly say "Go HIGHER!".
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -78,8 +78,8 @@ difficulty = st.sidebar.selectbox(
 )
 
 attempt_limit_map = {
-    "Easy": 6,
-    "Normal": 8,
+    "Easy": 8, #Fixed: Change attempts for Easy from 6 to 8.
+    "Normal": 6, #Fixed: Set attempts for Normal from 8 to 6. 
     "Hard": 5,
 }
 attempt_limit = attempt_limit_map[difficulty]
@@ -104,10 +104,13 @@ if "status" not in st.session_state:
 if "history" not in st.session_state:
     st.session_state.history = []
 
+if "game_count" not in st.session_state:  # new code: tracks game number so text input key changes on new game clearing the box.
+    st.session_state.game_count = 0
+
 st.subheader("Make a guess")
 
 st.info(
-    f"Guess a number between 1 and 100. "
+    f"Guess a number between {low} and {high}. "  # FIXED: Replaced hardcoded 1 to 100 with dynamic low/high variables so the displayed range matches the selected difficulty.
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
@@ -120,7 +123,7 @@ with st.expander("Developer Debug Info"):
 
 raw_guess = st.text_input(
     "Enter your guess:",
-    key=f"guess_input_{difficulty}"
+    key=f"guess_input_{difficulty}_{st.session_state.game_count}"  # new code: game_count added to key so input resets when New Game is clicked.
 )
 
 col1, col2, col3 = st.columns(3)
@@ -133,7 +136,9 @@ with col3:
 
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.secret = random.randint(low, high)  # FIXED: Replaced hardcoded 1 to 100 with dynamic low/high variables so the new secret stays within the selected difficulty's range.
+    st.session_state.status = "playing"  # FIXED: Added missing status reset without this the won/lost state persisted after clicking New Game blocking the new game from starting.
+    st.session_state.game_count += 1  # new code: increment game count so the text input key changes forcing the input box to clear.
     st.success("New game started.")
     st.rerun()
 
@@ -155,10 +160,8 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
+        # FIXED: Removed even/odd attempt string casting — secret is now always passed as an int so check_guess uses consistent int comparison every attempt.
+        secret = st.session_state.secret
 
         outcome, message = check_guess(guess_int, secret)
 
