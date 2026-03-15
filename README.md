@@ -49,6 +49,7 @@ Fixes I applied:
 - [ ] [Insert a screenshot of your fixed, winning game here]
 
 My pytests:
+![image alt](https://github.com/ShamiaShanaha/ai110-module1show-gameglitchinvestigator-starter/blob/main/pytest.png?raw=true)
 
 
 
