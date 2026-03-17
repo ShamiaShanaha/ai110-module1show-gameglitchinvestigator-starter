@@ -71,8 +71,6 @@ Bug 4 Solved:
 
 
 
-My pytests:
-![image alt](https://github.com/ShamiaShanaha/ai110-module1show-gameglitchinvestigator-starter/blob/main/pytest.png?raw=true)
 
 
 
